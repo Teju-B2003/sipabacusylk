@@ -450,17 +450,6 @@
   .benefit-card h4{font-size:16.5px;margin-bottom:8px;font-family:'Sora',sans-serif;font-weight:700;}
   .benefit-card p{font-size:13.5px;color:var(--ink-soft);}
 
-  /* ---------- GALLERY ---------- */
-  .gallery-tabs{display:flex;gap:10px;margin-bottom:28px;}
-  .gtab{padding:9px 18px;border-radius:999px;border:1.5px solid var(--paper-line);background:transparent;font-size:14px;font-weight:700;color:var(--ink-soft);}
-  .gtab.active{background:var(--ink);color:var(--white);border-color:var(--ink);}
-  .gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:150px;gap:14px;}
-  .gallery-grid.hidden{display:none;}
-  .g-tile{border-radius:var(--radius-m);position:relative;overflow:hidden;}
-  .g-tile span{position:absolute;bottom:10px;left:12px;color:#fff;font-size:12.5px;font-weight:600;text-shadow:0 1px 4px rgba(0,0,0,.4);}
-  .g-tile.big{grid-column:span 2;grid-row:span 2;}
-  .g-tile .play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;}
-  .play-circle{width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.9);display:flex;align-items:center;justify-content:center;}
 
   /* ---------- STUDENTS IN ACTION (dark video showcase) ---------- */
   .action-section{background:var(--ink);color:var(--white);}
@@ -496,6 +485,12 @@
   .testi-video{position:relative;border-radius:var(--radius-s,10px);overflow:hidden;aspect-ratio:16/10;margin-bottom:18px;cursor:pointer;}
   .testi-video .play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;}
   .testi-video .testi-duration{position:absolute;bottom:8px;right:10px;color:#fff;font-size:11px;font-weight:700;background:rgba(0,0,0,.35);padding:2px 7px;border-radius:999px;}
+  .testi-video-el{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;background:#000;}
+  .testi-video-real.playing .play,
+  .testi-video-real.playing .testi-duration{opacity:0;pointer-events:none;}
+  .testi-video-real .play{transition:opacity .15s;z-index:2;}
+  .testi-video-real .play-circle{transition:transform .15s;}
+  .testi-video-real:hover .play-circle{transform:scale(1.08);}
 
   /* ---------- PRICING ---------- */
   .pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:36px;align-items:start;}
@@ -654,7 +649,6 @@
     .why-grid,.certs-grid{grid-template-columns:repeat(2,1fr);}
     .programs-grid,.testi-grid{grid-template-columns:1fr;}
     .benefits-grid{grid-template-columns:repeat(2,1fr);}
-    .gallery-grid{grid-template-columns:repeat(2,1fr);}
     .stat-row{gap:28px;}
     .field-row{grid-template-columns:1fr;}
     .event-row{grid-template-columns:1fr;}
@@ -964,7 +958,6 @@
       <li><a href="#why">Why SIP</a></li>
       <li><a href="#programs">Programs</a></li>
       <li><a href="#benefits">Benefits</a></li>
-      <li><a href="#gallery">Gallery</a></li>
       <li><a href="#students-in-action">Students in Action</a></li>
       <li><a href="#testimonials">Testimonials</a></li>
       <li><a href="#pricing">Pricing</a></li>
@@ -1680,34 +1673,6 @@
   </div>
 </section>
 
-<!-- ================= GALLERY ================= -->
-<section id="gallery" class="section-pad">
-  <div class="wrap">
-    <div class="head-block">
-      <div class="eyebrow">Gallery</div>
-      <h2>Life inside a SIP Abacus classroom</h2>
-    </div>
-    <div class="gallery-tabs">
-      <button class="gtab" data-tab="photos">Photos</button>
-      <button class="gtab active" data-tab="videos">Videos</button>
-    </div>
-    <div class="gallery-grid hidden" id="gallery-photos">
-      <div class="g-tile big" style="background:linear-gradient(160deg,var(--teal),#0F7563);"><span>Batch practice session</span></div>
-      <div class="g-tile" style="background:linear-gradient(160deg,var(--coral),#C43F31);"><span>Olympiad day</span></div>
-      <div class="g-tile" style="background:linear-gradient(160deg,var(--sun),#D69A00);"><span>Junior orientation</span></div>
-      <div class="g-tile" style="background:linear-gradient(160deg,var(--violet),#5C3E8C);"><span>Level 11 graduation</span></div>
-      <div class="g-tile" style="background:linear-gradient(160deg,var(--magenta),#A62B58);"><span>Parent open house</span></div>
-      <div class="g-tile" style="background:linear-gradient(160deg,#26B39A,var(--teal));"><span>Speed round finals</span></div>
-    </div>
-    <div class="gallery-grid" id="gallery-videos">
-      <div class="g-tile big" style="background:linear-gradient(160deg,#2E3A5C,var(--ink));"><div class="play"><div class="play-circle"><svg width="18" height="18" viewBox="0 0 24 24" fill="#16233F"><path d="M8 5v14l11-7z"></path></svg></div></div><span>Program walkthrough</span></div>
-      <div class="g-tile" style="background:linear-gradient(160deg,#2E3A5C,var(--ink));"><div class="play"><div class="play-circle"><svg width="16" height="16" viewBox="0 0 24 24" fill="#16233F"><path d="M8 5v14l11-7z"></path></svg></div></div><span>Student demo</span></div>
-      <div class="g-tile" style="background:linear-gradient(160deg,#2E3A5C,var(--ink));"><div class="play"><div class="play-circle"><svg width="16" height="16" viewBox="0 0 24 24" fill="#16233F"><path d="M8 5v14l11-7z"></path></svg></div></div><span>Parent interview</span></div>
-      <div class="g-tile" style="background:linear-gradient(160deg,#2E3A5C,var(--ink));"><div class="play"><div class="play-circle"><svg width="16" height="16" viewBox="0 0 24 24" fill="#16233F"><path d="M8 5v14l11-7z"></path></svg></div></div><span>Olympiad highlights</span></div>
-    </div>
-  </div>
-</section>
-
 <!-- ================= STUDENTS IN ACTION ================= -->
 <section id="students-in-action" class="section-pad action-section">
   <div class="wrap">
@@ -1766,7 +1731,10 @@
     </div>
     <div class="testi-grid">
       <div class="testi-card">
-        <div class="testi-video" style="background:linear-gradient(160deg,var(--coral),#C43F31);">
+        <div class="testi-video testi-video-real" style="background:linear-gradient(160deg,var(--coral),#C43F31);" data-video="anita-testimonial.mp4">
+          <video class="testi-video-el" preload="metadata" playsinline poster="anita-testimonial-poster.jpg">
+            <source src="anita-testimonial.mp4" type="video/mp4">
+          </video>
           <div class="play"><div class="play-circle"><svg width="18" height="18" viewBox="0 0 24 24" fill="#16233F"><path d="M8 5v14l11-7z"></path></svg></div></div>
           <span class="testi-duration">0:42</span>
         </div>
@@ -1943,7 +1911,6 @@
         <a href="#about">About SIP</a>
         <a href="#programs">Programs</a>
         <a href="#benefits">Benefits</a>
-        <a href="#gallery">Gallery</a>
       </div>
       <div class="foot-col">
         <h5>Support</h5>
@@ -2068,21 +2035,27 @@
     }
   })();
 
-  // ---- Gallery tabs ----
+  // ---- Testimonial click-to-play video (with sound) ----
   (function(){
-    const tabs = document.querySelectorAll('.gtab');
-    const photos = document.getElementById('gallery-photos');
-    const videos = document.getElementById('gallery-videos');
-    tabs.forEach(tab=>{
-      tab.addEventListener('click', ()=>{
-        tabs.forEach(t=>t.classList.remove('active'));
-        tab.classList.add('active');
-        if(tab.dataset.tab === 'photos'){
-          photos.classList.remove('hidden'); videos.classList.add('hidden');
+    document.querySelectorAll('.testi-video-real').forEach(wrap=>{
+      const video = wrap.querySelector('video');
+      if(!video) return;
+      wrap.addEventListener('click', ()=>{
+        if(video.paused){
+          video.muted = false;
+          video.play().then(()=> wrap.classList.add('playing')).catch(()=>{
+            // autoplay with sound blocked — fall back to muted play
+            video.muted = true;
+            video.play();
+            wrap.classList.add('playing');
+          });
         }else{
-          videos.classList.remove('hidden'); photos.classList.add('hidden');
+          video.pause();
+          wrap.classList.remove('playing');
         }
       });
+      video.addEventListener('ended', ()=> wrap.classList.remove('playing'));
+      video.addEventListener('pause', ()=> wrap.classList.remove('playing'));
     });
   })();
 
