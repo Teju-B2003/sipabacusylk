@@ -2093,6 +2093,20 @@
     });
   })();
 
+  // ---- Only one video plays at a time (site-wide) ----
+  (function(){
+    const allVideos = Array.from(document.querySelectorAll('video'));
+    allVideos.forEach(v=>{
+      v.addEventListener('play', ()=>{
+        allVideos.forEach(other=>{
+          if(other !== v && !other.paused){
+            other.pause();
+          }
+        });
+      });
+    });
+  })();
+
   // ---- FAQ accordion ----
   (function(){
     document.querySelectorAll('.faq-item').forEach(item=>{
