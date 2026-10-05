@@ -1,0 +1,43 @@
+# Apache (cPanel / shared hosting). Use this file only if your host runs Apache.
+RewriteEngine On
+
+# Force HTTPS and a single canonical host (non-www)
+RewriteCond %{HTTPS} off [OR]
+RewriteCond %{HTTP_HOST} ^www\. [NC]
+RewriteRule ^ https://sipabacusylk.com%{REQUEST_URI} [L,R=301]
+
+ErrorDocument 404 /404.html
+Options -Indexes
+
+# Never serve dotfiles, backups, logs, env or source-control folders
+<FilesMatch "^\.|\.(env|bak|old|orig|sql|log|ini|conf|sh|yml|yaml|md|git|swp|tmp)$">
+  Require all denied
+</FilesMatch>
+<FilesMatch "^\.well-known$">
+  Require all granted
+</FilesMatch>
+RedirectMatch 404 /\.git
+
+<IfModule mod_headers.c>
+  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "DENY"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()"
+  Header always set Cross-Origin-Opener-Policy "same-origin"
+  Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'sha256-op5CIaYtKBSL39E6cGZXd4KHI1zzzhNUaxDt1ouYA0I=' 'sha256-Yjsq52HosOYoyba5FFsYhEl0qIF3dEbL28jCMKlSCRA='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; media-src 'self'; frame-src https://www.google.com https://maps.google.com; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'; upgrade-insecure-requests; frame-ancestors 'none'"
+  Header unset X-Powered-By
+</IfModule>
+
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css application/javascript application/json application/ld+json image/svg+xml text/xml application/xml
+</IfModule>
+
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType image/webp "access plus 7 days"
+  ExpiresByType image/png "access plus 7 days"
+  ExpiresByType image/jpeg "access plus 7 days"
+  ExpiresByType video/mp4 "access plus 7 days"
+  ExpiresByType text/html "access plus 0 seconds"
+</IfModule>

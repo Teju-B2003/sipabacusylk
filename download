@@ -1,0 +1,14 @@
+# secrets and local config
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+# backups, logs, temp
+*.bak
+*.old
+*.sql
+*.log
+*.tmp
+.DS_Store
+node_modules/
