@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en-IN"><head><meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-op5CIaYtKBSL39E6cGZXd4KHI1zzzhNUaxDt1ouYA0I=' 'sha256-Yjsq52HosOYoyba5FFsYhEl0qIF3dEbL28jCMKlSCRA='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; media-src 'self' data:; frame-src https://www.google.com https://maps.google.com; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-op5CIaYtKBSL39E6cGZXd4KHI1zzzhNUaxDt1ouYA0I=' 'sha256-JQYoaXCHxlQ6JE7e1Y/QtCH/XbSvjD/J1nuq0Lv0Nz8='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; media-src 'self' data:; frame-src https://www.google.com https://maps.google.com; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'; upgrade-insecure-requests">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SIP Abacus Classes in Yelahanka, Bengaluru | Ages 5–14</title>
@@ -207,6 +207,7 @@
     line-height:1.6;
     -webkit-font-smoothing:antialiased;
     overflow-x:hidden;
+    overflow-x:clip;
     width:100%;
     max-width:100vw;
   }
@@ -343,10 +344,10 @@
 
   /* ---------- NAV ---------- */
   .site-nav{
-    position:static !important;
-    top:auto !important;
+    position:sticky;
+    top:0;
     z-index:100;
-    background:rgba(251,246,236,.98);
+    background:#FBF6EC;
     border-bottom:1px solid var(--paper-line);
   }
   .nav-row{
@@ -1078,7 +1079,6 @@
   /* ---------- accessibility additions ---------- */
   .skip-link{position:absolute;left:12px;top:-60px;z-index:1000;background:var(--ink);color:var(--paper);padding:10px 16px;border-radius:8px;font-weight:600;transition:top .15s;}
   .skip-link:focus{top:12px;}
-  @media (prefers-reduced-motion: reduce){.promo-track,.ticker-track{animation:none;}}
 </style>
 </head>
 <body>
@@ -2282,13 +2282,6 @@
     });
   })();
 
-  // ---- Respect reduced-motion: do not autoplay the decorative hero clip ----
-  (function(){
-    if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches){
-      const v = document.querySelector('.hero-video');
-      if(v){ v.removeAttribute('autoplay'); v.pause(); }
-    }
-  })();
 
 </script>
 
