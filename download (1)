@@ -25,7 +25,7 @@ RedirectMatch 404 /\.git
   Header always set Referrer-Policy "strict-origin-when-cross-origin"
   Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()"
   Header always set Cross-Origin-Opener-Policy "same-origin"
-  Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'sha256-op5CIaYtKBSL39E6cGZXd4KHI1zzzhNUaxDt1ouYA0I=' 'sha256-Yjsq52HosOYoyba5FFsYhEl0qIF3dEbL28jCMKlSCRA='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; media-src 'self'; frame-src https://www.google.com https://maps.google.com; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'; upgrade-insecure-requests; frame-ancestors 'none'"
+  Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'sha256-op5CIaYtKBSL39E6cGZXd4KHI1zzzhNUaxDt1ouYA0I=' 'sha256-JQYoaXCHxlQ6JE7e1Y/QtCH/XbSvjD/J1nuq0Lv0Nz8='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; media-src 'self' data:; frame-src https://www.google.com https://maps.google.com; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'; upgrade-insecure-requests; frame-ancestors 'none'"
   Header unset X-Powered-By
 </IfModule>
 
